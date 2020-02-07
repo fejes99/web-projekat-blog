@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   Blog.findById(req.params.id)
     .then(blog => res.json(blog))
-    .catch(err => res.status(404).json({ noblogfound: 'No Blog found' }));
+    .catch(err => res.status(404).json({ error: 'No Blog found' }));
 });
 
 // @route GET api/blogs
