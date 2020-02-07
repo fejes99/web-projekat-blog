@@ -1,9 +1,10 @@
 const express = require('express');
 const connectDB = require('./config/db');
-var cors = require('cors');
+const cors = require('cors');
 
 // routes
 const blogs = require('./routes/api/blogs');
+const users = require('./routes/api/users');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(express.json({ extended: false }));
 
 // use Routes
 app.use('/api/blogs', blogs);
+app.use('api/users', users);
 
 const port = process.env.PORT || 8082;
 
