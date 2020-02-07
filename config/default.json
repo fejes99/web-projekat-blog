@@ -1,0 +1,4 @@
+{
+    "mongoURI":
+      "mongodb+srv://david99:david99@cluster0-mlqss.gcp.mongodb.net/test?retryWrites=true&w=majority"
+  }
