@@ -16,8 +16,8 @@ connectDB();
 app.use(cors({ origin: true, credentials: true }));
 
 // Init Middleware
-// app.use(express.json({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.json({ extended: false }));
+// app.use(bodyParser.json());
 
 app.get('/hello_world', (req, res) => res.send('Hello world!'));
 

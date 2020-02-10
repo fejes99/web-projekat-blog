@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../../middleware/auth');
 
 // Load Blog model
 const Blog = require('../../models/Blog');
@@ -21,7 +22,7 @@ router.get('/', (req, res) => {
 // @route GET api/blogs/:id
 // @description Get single blog by id
 // @access Public
-router.get('/:id', (req, res) => {
+router.get('/:id', auth,(req, res) => {
   Blog.findById(req.params.id)
     .then(blog => res.json(blog))
     .catch(err => res.status(404).json({ error: 'No Blog found' }));
@@ -30,7 +31,7 @@ router.get('/:id', (req, res) => {
 // @route GET api/blogs
 // @description add/save blog
 // @access Public
-router.post('/', (req, res) => {
+router.post('/',(req, res) => {
   console.log("my req is:: ", req);
   Blog.create(req.body)
     .then(blog => res.json({ msg: 'Blog added successfully' }))
@@ -40,7 +41,7 @@ router.post('/', (req, res) => {
 // @route GET api/blogs/:id
 // @description Update blog
 // @access Public
-router.put('/:id', (req, res) => {
+router.put('/:id', auth,(req, res) => {
   Blog.findByIdAndUpdate(req.params.id, req.body)
     .then(blog => res.json({ msg: 'Updated successfully' }))
     .catch(err =>
@@ -51,7 +52,7 @@ router.put('/:id', (req, res) => {
 // @route GET api/blogs/:id
 // @description Delete blog by id
 // @access Public
-router.delete('/:id', (req, res) => {
+router.delete('/:id', auth,(req, res) => {
   Blog.findByIdAndRemove(req.params.id, req.body)
     .then(blog => res.json({ mgs: 'Blog entry deleted successfully' }))
     .catch(err => res.status(404).json({ error: 'No such a blog' }));
