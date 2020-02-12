@@ -14,7 +14,7 @@ router.get('/test', (req, res) => res.send('blog route testing!'));
 // @description Get all blogs
 // @access Public
 router.get('/', (req, res) => {
-  Blog.find()
+  Blog.find().sort({published_date: 'desc'})
     .then(blogs => res.json(blogs))
     .catch(err => res.status(404).json({ noblogsfound: 'No Blogs found' }));
 });

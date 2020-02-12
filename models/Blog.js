@@ -7,11 +7,12 @@ const BlogSchema = new mongoose.Schema({
   },
   content: {
     type: String,
+    maxlength: 2000,
     required: true
   },
   author: {
     type: String,
-    required: true
+    required: false
   },
   description: {
     type: String
